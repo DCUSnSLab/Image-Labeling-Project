@@ -5,27 +5,27 @@
 
 ## 프로젝트 개발환경 
 * 서버 환경
-소프트웨어
+> **소프트웨어**
 > Apache
 > Linux(세부명 게시 예정)
 > MariaDB
 
 * UI
-언어
+> **언어**
 > HTML5
 
 * 이미지 크롤링 
-언어 
+> **언어** 
 > Python
 
 * 딥러닝
-언어
+> **언어**
 > Python
-소프트웨어 
+> **소프트웨어**
 > Microsoft Windows 10 Professional
-라이브러리
+> **라이브러리**
 > Tensorflow 1.4
-하드웨어
+> **하드웨어**
 > CPU : Intel i7-7700
 > GPU : NVidia GTX 1080Ti(11GB GDDR)
 > M/M : 16GB
