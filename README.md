@@ -32,7 +32,7 @@
 > Python
 > **소프트웨어**
 > Microsoft Windows 10 Professional
-> Jupyter Notebook [http://203.250.33.78](203.250.33.78)
+> Jupyter Notebook [!http://203.250.33.78](203.250.33.78)
 > **라이브러리**
 > Tensorflow 1.4
 > **하드웨어**
