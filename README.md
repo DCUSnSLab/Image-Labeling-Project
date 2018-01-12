@@ -10,7 +10,7 @@
 * 딥러닝 - 안광은 (yooer10ms@cu.ac.kr)
 * 지도교수 - 서동만 (sarum@cu.ac.kr)
 
-개발자들은 [READMD for Developers](http://203.250.34.153:9000/SnSLab/Image-Labeling-project/code/master/README+for+Developers.md)를 읽어주세요~
+개발자들은 [READMD for Developers](README+for+Developers.md)를 읽어주세요~
 
 ## 프로젝트 개발환경 
 * 서버 환경
@@ -32,7 +32,7 @@
 > Python
 > **소프트웨어**
 > Microsoft Windows 10 Professional
-> Jupyter Notebook [!http://203.250.33.78](203.250.33.78)
+> Jupyter Notebook [http://203.250.33.78](http://203.250.33.78)
 > **라이브러리**
 > Tensorflow 1.4
 > **하드웨어**
