@@ -83,6 +83,6 @@ def foo(a, b = time.time())
 
  아래는 Commit 의견 첨삭 기능 사용방법입니다. 
  1. 코드의 커밋(Commit)으로 이동하여 수정할 브렌치 선택 후 수정할 커밋을 선택합니다. 
- ![](gitPageResources/commit_comment_append_1)
+ ![](gitPageResources/commit_comment_append_1.png)
  2. 첨삭을 할 라인의 좌측 메세지 박스를 선택 후 의견을 작성 후 저장합니다.
- ![](gitPageResources/commit_comment_append_2)
+ ![](gitPageResources/commit_comment_append_2.png)
