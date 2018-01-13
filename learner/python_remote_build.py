@@ -1,14 +1,15 @@
 """
- 파이선 코드 원격 실행 테스트 프로그램
- 작성자 : 안광은 (yooer10ms@cu.ac.kr)
+텐서플로 테스팅 프로그램
+저자 : 안광은 (yooer10ms@cu.ac.kr)
+
+별거 없어요... 텐서플로 되는지 그냥 만들어본겁니다 ㅇㅅㅇ..
+
 """
 
-def main():
-    """
-    간단한 함수 테스트입니다. 이거 적은 이유는 별거 없어요. pylint가 함수 설명 만들라고 난리쳐서요....
-    """
-    print("함수 테스트입니다 \n")
+import tensorflow as tf
 
-if __name__ == "__main__":
-    main()
-    
+HELLO = tf.constant("안녕하세요, 전 한국남자입니다 :)\n")
+
+# 텐서플로 동작은 되는데 한국어는 바이너리에서 바로 깨지는군요... 절레절레...
+with tf.Session() as sess:
+    print(sess.run(HELLO))
