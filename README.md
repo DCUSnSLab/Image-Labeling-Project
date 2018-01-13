@@ -38,4 +38,4 @@
 > Yona 1.8.0(Git 서버)
 
 ## OSS 라이센스
-[라이센스 링크링크](LICENSES)
+[라이센스](LICENSE)
