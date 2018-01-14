@@ -45,18 +45,17 @@
 
 * **소괄호(Parenthese)**
  소괄호의 크기는 최소한으로 합니다. 단, 변수를 여러개 받는 경우 개행으로 처리하거나 변수간의 구분을 위헤 스페이스를 추가하여 작성하는 것을 권장합니다.
-
-```python
-def example(arg_1, arg_2, arg_3
-               arg_4, arg_5)
-```
+ ```python
+ def example(arg_1, arg_2, arg_3
+                arg_4, arg_5)
+ ```
 
 * **들여쓰기(Indent)**
  Python에서 들여쓰기는 기타 다른 언어의 중괄호와 같은 코드의 영역을 지정하는 방법중 하나입니다. 개발하는 도구에 따라 들여쓰기는 띄어쓰기(Space)나 탭문자(tab-character;\t)를 사용하게 되며 띄어쓰기 경우 코드에서 최초 등장한 간격을 기준으로 하위 코드의 영역을 구분합니다. 이 들여쓰기가 혼용된 코드의 경우 프로그램이 정상적으로 동작하지 않습니다.
 
 * **이름 짓기**
  프로그램의 가독성을 위해 이름 짓기 규칙성은 필수입니다. 파이선 개발자인 Guido의 가이드라인에 따라 작성하는 것을 권장합니다.
-![](gitPageResources/Guido_Recommendation.jpg)
+![](mdRes/Guido_Recommendation.jpg)
 
 * **복합, 지역, 내부 클래스**
  클래스를 작성시 복합, 지역, 내부 클래스가 필요합니다. 그러나 객체가 다른 타 클래스와 상호작용이 일어나는 경우 스파게티 코드가 될 가능성이 높습니다. 이를 방지하기 위해 **읽기만 가능한 함수들로 구성하는 것을 권장합니다.**
@@ -85,9 +84,9 @@ def foo(a, b = time.time())
 
  * **Commit 의견 첨삭 기능 사용방법입니다.**
  코드의 커밋(Commit)으로 이동하여 수정할 브렌치 선택 후 수정할 커밋을 선택합니다.
- ![](gitPageResources/commit_comment_append_1.png)
+ ![](mdRes/commit_comment_append_1.png)
  첨삭을 할 라인의 좌측 메세지 박스를 선택 후 의견을 작성 후 저장합니다.
- ![](gitPageResources/commit_comment_append_2.png)
+ ![](mdRes/commit_comment_append_2.png)
 
 * **깃(Git) 사용시 주의사항**
  깃 명령어는 제한없이 사용이 가능하지만 일부 기능은 신중하게 사용되어야 되는 기능이 있습니다. 대표적으로 master 브랜치(branch)에 대한 직접적인 merge 작업과 tag 명령어는 브랜치 관리의 일관성을 떨어뜨릴 수 있기에 신중하게 사용되어야 합니다.
