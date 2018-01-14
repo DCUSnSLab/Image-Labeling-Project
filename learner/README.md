@@ -20,4 +20,5 @@
 ## 프로그램 구성
 
 ### 디렉토리 구성
-./sandbox           # 테스트 코드 폴더
+./sandbox                   # 테스트 코드 폴더
+    ./SegNet-Tutorial       # SegNet 저자가 작성한 튜토리얼
