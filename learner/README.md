@@ -12,6 +12,8 @@
 
 > **라이브러리**
 > Tensorflow 1.4
+> Opencv 3.4 for Python 3.5.x
+> PyQt5 5.9
 > **하드웨어**
 > CPU : Intel i7-7700
 > GPU : NVidia GTX 1080Ti(11GB GDDR)
