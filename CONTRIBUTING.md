@@ -95,47 +95,12 @@ def foo(a, b = time.time())
  
  * **프로그램 설명**
  프로그램 설명은 각 Python 파일에 필수적으로 표기해야되는 정보입니다. 파일 생성 및 버전에 관한 정보를 사전에 공유하여 프로그램 실행 시 발생될 수 있는 문제점을 미리 점검할 수 있게 합니다. 
- ```python
- """
- 텐서플로 테스팅 프로그램
- 저자 : 안광은 (yooer10ms@cu.ac.kr) 
- 버전 : 3.5.4
- 
- 별거 없어요... 텐서플로 되는지 그냥 만들어본겁니다 ㅇㅅㅇ..
- 
- """
- 
- import tensorflow as tf
- 
- HELLO = tf.constant("안녕하세요, 전 한국남자입니다 :)\n")
- 
- # 텐서플로 동작은 되는데 한국어는 바이너리에서 바로 깨지는군요... 절레절레...
- with tf.Session() as sess:
-     print(sess.run(HELLO))
- ```
+ ![](mdRes/code_template.png)
  
  * **함수**
  모든 함수는 함수 정의 밑에 작성됩니다. 설명은 함수의 코드를 보지 않고 입력과 출력이 어떻게 되는지 알 수 있도록 충분히 설명합니다. 
- ```python
- def printing(string_to_print=None):
-    """글자를 콘솔 화면에 출력합니다
-
-    문자열을 입력받아 화면에 바로 출력을 해주는 함수입니다. 
-
-    Args:
-        string_to_print: 출력할 문자열 변수입니다. 만약 아무런 값이 주어지지 않는다면
-        띄어쓰기 글자 하나로 초기화됩니다.
-
-    Returns:
-        글자를 문자열로 다시 반환합니다. 
-
-    Raises:
-        IOError: 입출력에러를 발생시킵니다.
-    """
-    if string_to_print == None:
-        string_to_print = " "
-    pass
- ```
+ ![](mdRes/function_template.png)
+ 
  예외적으로 함수에 문서를 작성하지 않는 경우가 있습니다. **함수가 내부에서만 사용되기만 하는 경우, 매우 짧은 경우, 명백하게 의미를 전달할 수 있는 경우입니다.**
  
 
