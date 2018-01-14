@@ -6,6 +6,7 @@
 
 ## 프로그램 구조도
 ![](mdRes/Image_Labeling_Architecture.png)
+
 ### 개발자
 
 개발자들은 [CONTRIBUTING](CONTRIBUTING.md)를 읽어주세요~
