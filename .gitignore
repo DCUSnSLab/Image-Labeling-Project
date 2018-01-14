@@ -6,5 +6,5 @@
 .eclipse/*   # Eclipse 프로젝트 세팅 파일 제거
 .settings/*  # Eclipse 프로젝트 세팅 파일 제거
 .vsproject/* # Visual Studio 프로젝트 세팅파일 제거
-
+.*           # 숨김파일 제거
 .vscode/launch.json
