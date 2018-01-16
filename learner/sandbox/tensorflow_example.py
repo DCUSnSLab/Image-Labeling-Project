@@ -13,4 +13,4 @@ HELLO = tf.constant("안녕하세요, 전 한국남자입니다 :)\n")
 
 # 텐서플로 동작은 되는데 한국어는 바이너리에서 바로 깨지는군요... 절레절레...
 with tf.Session() as sess:
-    print(sess.run(HELLO))
+    print(sess.run(HELLO)) 랩장바보 엘ㄹ레레ㅔ레레ㅔㄹ7
