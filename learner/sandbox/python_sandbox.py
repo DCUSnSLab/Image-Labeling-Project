@@ -17,4 +17,4 @@ str_2 = 'a concatenation'
 print(str_1 + str_2) # 진짜 잘됨 ㅇㅅㅇ
 
 # 중간에 고정 문자 끼워보기
-print(str_1 + ' ' + str_2)
+print(str_1 + ' ' + str_2) # 제대로 잘됨 ㅇㄴㅇ~
