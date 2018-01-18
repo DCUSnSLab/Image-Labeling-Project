@@ -1,7 +1,7 @@
 """
 파이선 opencv 라이브러리 테스팅
 저자 : 안광은 (yooer10ms@cu.ac.kr)
-버전 : 3.5.4
+버전 : python 3.5.4, opencv 3.4.0
 
 Visual Studio Code에서 실행 시 라이브러리 호출 문제로 Python:Terminal (integrated)로 실행하면 잘됨!
 
