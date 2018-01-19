@@ -8,7 +8,9 @@ Visual Studio Code에서 실행 시 라이브러리 호출 문제로 Python:Term
 레퍼런스:
 https://stackoverflow.com/questions/20425724/pythonopencv-cv2-imwrite
 
-
+작업 여부 검토:
+1. 대량의 이미지 생성을 위한 컨버팅 속도 증가. 
+    - GPU, 병렬처리를 사용한 컨버팅 속도 증가 방법 탐색
 """
 
 import cv2
