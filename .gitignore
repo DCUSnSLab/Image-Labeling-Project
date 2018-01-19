@@ -16,3 +16,5 @@ learner/sandbox/SegNet-Tutorial/
 
 # UI
 learner/resources/videos/20170923_153612.mp4
+.vscode/.ropeproject/objectdb
+.vscode/.ropeproject/config.py
