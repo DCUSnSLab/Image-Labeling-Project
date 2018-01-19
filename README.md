@@ -10,15 +10,15 @@
 
 ### 개발자
 
-이민영 (dud1547@cu.ac.kr) - 이미지 라벨링 시스템 개발, 이미지 수집 & 처리
-한  정 (gkswjd9969@cu.ac.kr) - 이미지 라벨링 시스템 개발, 웹 UI 개발
-안광은 (yooer10ms@cu.ac.kr) - 딥러닝 시스템 개발, Git 페이지 정원사(?)
+* 이민영 (dud1547@cu.ac.kr) - 이미지 라벨링 시스템 개발, 이미지 수집 & 처리
+* 한  정 (gkswjd9969@cu.ac.kr) - 이미지 라벨링 시스템 개발, 웹 UI 개발
+* 안광은 (yooer10ms@cu.ac.kr) - 딥러닝 시스템 개발, Git 페이지 정원사(?)
 
 개발자들은 [CONTRIBUTING](CONTRIBUTING.md)를 읽어주세요~
 
 ### 기여자
 
-서동만 (sarum@cu.ac.kr) - 지도교수
+* 서동만 (sarum@cu.ac.kr) - 지도교수
 
 ## OSS 라이센스
 
