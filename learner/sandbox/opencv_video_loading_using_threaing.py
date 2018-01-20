@@ -35,7 +35,7 @@ print(__doc__) # 프로그램 설명을 콘솔에 표시. TODO:어이야...왜 �
 VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/resources/videos/sample_video_2.mp4' # 실행시킬 비디오파이이일!
 IS_THREAD_ENABLE = False
 IS_DEBUG_SCREEN_ENABLE = False
-IS_PLAY_PAUSE_ENABLE = False
+IS_PLAY_PAUSED = False
 WINDOW_TITLE = 'Video Player with CPU Threading'
 class DummyThreadTask(object):
     """
@@ -77,9 +77,9 @@ class TextOnScreen(object):
     _font_size_interval = 2 # 그냥 몇번 테스트 해봤는데 opencv 의 글자가 0.1 커지면 2정도 커지는게 적당히 보이더라구욯
     _container = deque() # 프레임 저장할 컨테이너~
     _frame = None # 디버깅 글자가 추가된 프레임을 저장할 공간~
-    display_text_size = 1.0 # 글자의 두께 결정
+    display_text_size = 1.0 # 글자의 크기
     display_text_interval = 20 # 글자 상하 간격
-
+    display_text_thickness = 1 # 글자 굵기
     def __init__(self, screen_pos_x = None, screen_pos_y = None):
         """
         처음에 글자가 시작할 위치를 지정해줍니다아아! 근데 만약 아무것도 안주면 최초 위치는 화면 좌측 상단의 (20,20)위치에서 시작할겁니다~
@@ -111,6 +111,12 @@ class TextOnScreen(object):
         """
         self.display_text_size += float(size * self._font_size_ratio)
         self.display_text_interval += size * self._font_size_interval
+        self.display_y += size * 2 # 눈에 이상하지 않을 정도로(?) 글자가 상단에 잘리는거 없애기
+        if self.display_y >= 40:
+            self.display_text_thickness = int(self.display_y/20)
+        else:
+            self.display_text_thickness = 1
+        print(self.display_y)
 
     def add(self, string):
         """
@@ -142,8 +148,8 @@ class TextOnScreen(object):
             _tmp_str = self._container.popleft() # 메세지 꺼내기~!
             _interval = self.display_text_interval * itr_container # 메세지 위아래 간격 만들기
             # 디버깅 메세지 쓰기~!
-            cv2.putText(_frame, _tmp_str.decode('utf-8'), (self.display_x + 1, self.display_y + 1 + _interval), cv2.FONT_HERSHEY_PLAIN, self.display_text_size, (0, 0, 0), thickness = 3, lineType=cv2.LINE_AA)
-            cv2.putText(_frame, _tmp_str.decode('utf-8'), (self.display_x, self.display_y + _interval), cv2.FONT_HERSHEY_PLAIN, self.display_text_size, (255, 255, 255), lineType= cv2.LINE_AA)
+            cv2.putText(_frame, _tmp_str.decode('utf-8'), (self.display_x + 1, self.display_y + 1 + _interval), cv2.FONT_HERSHEY_PLAIN, self.display_text_size, (0, 0, 0), thickness = self.display_text_thickness, lineType=cv2.LINE_AA)
+            cv2.putText(_frame, _tmp_str.decode('utf-8'), (self.display_x, self.display_y + _interval), cv2.FONT_HERSHEY_PLAIN, self.display_text_size, (255, 255, 255), thickness = self.display_text_thickness, lineType= cv2.LINE_AA)
         self._container.clear() # 글자 출력하면 디버깅 메세지 컨테이너 비우기
         return _frame # 디버깅 메세지가 적어진 프레임을 반환합니닷~
 def process_frame(frame, _):
@@ -206,6 +212,7 @@ if __name__ == '__main__':
     THREAD_POOL = ThreadPool(processes = THREAD_COUNTS) # 스레드 활성화
     THREAD_CONTAINER = deque() # 스레드 결과를 담아두는 컨테이너
     DEBUGGER = TextOnScreen() # 디버깅 메세지용~!
+    _pause_frame = None
     
     if VIDEO.isOpened is False: # 파일을 못찾는 경우 프로그램 끄기!
             print('Video is not loaded!')
@@ -221,34 +228,35 @@ if __name__ == '__main__':
             DEBUGGER.adjust_display_size(-1)
         if USER_INPUT is ord('t'): # 스레드 활성화
             IS_THREAD_ENABLE = not IS_THREAD_ENABLE
-        if USER_INPUT is 27 or USER_INPUT is ord('q'): # 프로그램 끄기 (esc키 )
+        if USER_INPUT is 27 or USER_INPUT is ord('q'): # 프로그램 끄기 (esc키, q키 )
             break
         if USER_INPUT is ord(' '): # 재생 일시 정지
-            IS_PLAY_PAUSE_ENABLE = not IS_PLAY_PAUSE_ENABLE
+            IS_PLAY_PAUSED = not IS_PLAY_PAUSED
         
-        # 스레드 작업
-        while len(THREAD_CONTAINER) > 0 and THREAD_CONTAINER[0].ready(): # 작업해야될 스레드 개수가 다 찻다면 화면 잠깐 멈추고 출력하기
-            frame, _ = THREAD_CONTAINER.popleft().get() # 컨테이너에서 프레임 가져오기
-            if IS_DEBUG_SCREEN_ENABLE is True: # 디버그 메세지 추가하기
-                if IS_PLAY_PAUSE_ENABLE is True: # 일시 정지 글자 보여주기
-                    DEBUGGER.add('Play Paused')
-                DEBUGGER.add('Multiprocessing    :  ' + str(IS_THREAD_ENABLE))
-                DEBUGGER.add('Pending / Max     :  ' + str(len(THREAD_CONTAINER)) + '/' + str(THREAD_COUNTS))
-                frame = DEBUGGER.write_on_frame(frame) # 디버그 메세지 추가된 프레임 넣기
-            if IS_PLAY_PAUSE_ENABLE is True: # 일시정지 글자 보여주기
-                DEBUGGER.add('Play Paused') # 일시정지 글자 추가
-                frame = DEBUGGER.write_on_frame(frame)
-            cv2.imshow(WINDOW_TITLE, frame) # 화면 보여주기!
-        if len(THREAD_CONTAINER) < THREAD_COUNTS: # 스레드에 공간이 있다면 작업 넣기~
-            if IS_PLAY_PAUSE_ENABLE is False: #일시정지 안 했을때만 작업하기~
+        if IS_PLAY_PAUSED is not True: # 화면 재생하기~!
+            # 스레드 작업
+            while len(THREAD_CONTAINER) > 0 and THREAD_CONTAINER[0].ready(): # 작업해야될 스레드 개수가 다 찻다면 화면 잠깐 멈추고 출력하기
+                frame, _ = THREAD_CONTAINER.popleft().get() # 컨테이너에서 프레임 가져오기
+                _pause_frame = frame.copy() # 정지화면용으로 복사해두기
+                if IS_DEBUG_SCREEN_ENABLE is True: # 디버그 메세지 추가하기
+                    DEBUGGER.add('Multiprocessing    :  ' + str(IS_THREAD_ENABLE))
+                    DEBUGGER.add('Pending / Max     :  ' + str(len(THREAD_CONTAINER)) + '/' + str(THREAD_COUNTS))
+                cv2.imshow(WINDOW_TITLE, DEBUGGER.write_on_frame(frame)) # 화면 보여주기!
+            if len(THREAD_CONTAINER) < THREAD_COUNTS: # 스레드에 공간이 있다면 작업 넣기~
+             #일시정지 안 했을때만 작업하기~
                 _, frame = VIDEO.read() # 비디오 프레임 읽어오기
                 if frame is None: # 비디오가 다 끝나면 화면 출력 종료~! 
-                    #TODO: 근데 어째 생각해보니 이렇게 작성하면 스레드에 프레임이 남아 있어도 화면에 안나오고 짤릴 수 있겠는..걸?
+                    #TODO: 근데 어째 생각해보니 이렇게 작성하면 영상 다 출력했을 때 스레드에 프레임이 남아 있어도 화면에 안나오고 짤릴 수 있겠는..걸?
                     break
                 if IS_THREAD_ENABLE is True: # 스레드 사용하면 프로세스 여러개 사용하기
                     THREAD_TASKS = THREAD_POOL.apply_async(process_frame, (frame.copy(),0)) # process_frame 함수를 거처서 결과를 가져오기~
                 else: # 스레드가 꺼져있으면 그냥 프로세스 하나로 작업하기
                     THREAD_TASKS = DummyThreadTask(process_frame(frame, 0)) # process_frame 함수를 거처서 결과를 가져오기~
                 THREAD_CONTAINER.append(THREAD_TASKS) # 프레임 추가하기
-
+        else: # 정지화면 보여주기~ 키보드 입력은 먹힘!
+            DEBUGGER.add('Play Paused') #일시 정지 화면 출력하기
+            if IS_DEBUG_SCREEN_ENABLE is True: # 디버그 메세지 추가하기
+                DEBUGGER.add('Multiprocessing    :  ' + str(IS_THREAD_ENABLE))
+                DEBUGGER.add('Pending / Max     :  ' + str(len(THREAD_CONTAINER)) + '/' + str(THREAD_COUNTS))
+            cv2.imshow(WINDOW_TITLE, DEBUGGER.write_on_frame(_pause_frame)) # 디버그 메세지 추가된 프레임 넣기
 cv2.destroyAllWindows() # 화면 끄기
