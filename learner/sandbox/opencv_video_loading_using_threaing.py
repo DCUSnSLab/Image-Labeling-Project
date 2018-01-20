@@ -16,7 +16,8 @@ TODO:
 https://github.com/opencv/opencv/blob/master/samples/python/video_threaded.py
 
 키보드 단축키:
-
+    * 버튼 누르는 방법에 순서가 없슴당!
+    
     t - 멀티 프로세싱 활성화
     탭 키 - 디버깅 창 표시
     스페이스바 - 일시정지
