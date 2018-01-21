@@ -16,6 +16,12 @@
 
 개발자들은 [CONTRIBUTING](CONTRIBUTING.md)를 읽어주세요~
 
+**개발자 별 작업 브렌치**
+
+* crawler - 이민영
+* webEngine - 한정
+* learner - 안광은
+
 ### 기여자
 
 * 서동만 (sarum@cu.ac.kr) - 지도교수
