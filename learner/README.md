@@ -68,9 +68,18 @@ pip install numpy
 ### 디렉토리 구성
 
 ```None
-./sandbox                   # 테스트 코드 폴더
-    ./resources             # 테스트용 파일들~!
-        ./videos            # 비디오 파일들
-        ./images            # 이미지 파일들
-    ./SegNet-Tutorial       # SegNet 저자가 작성한 튜토리얼
+./sandbox                                           # 테스트 코드 폴더
+    ./resources                                     # 테스트용 파일들~!
+        ./videos                                    # 비디오 파일들
+            sample_video.mp4                        # 연습용 비디오 파일
+        ./images                                    # 이미지 파일들
+    opencv_image_loading.py                         # 이미지를 화면에 보여주기
+    opencv_video_loading_using_threaing.py          # 멀티프로세스 사용 비디오 재생하기
+    opencv_video_loading.py                         # 비디오 재생하기
+    opencv_video_to_image_saver_using_threading.py  # 멀티프로세스 사용 비디오 재생 및 저장하기
+    opencv_video_to_image_saver.py                  # 비디오 이미지로 저장하기
+    pyqt5_testing.py                                # PyQt 5.9 라이브러리 GUI 테스트
+    python_sandbox.py                               # 파이선 문법 자꾸 잊어먹어서;ㅂ;
+    tensorflow_example.py                           # 텐서플로 예제 및 테스트 코드
+    tkinter_testing.py                              # Tkinter 8.6 라이브러리 GUI 테스트
 ```
