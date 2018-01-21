@@ -33,9 +33,14 @@ import cv2 # 오픈쒸브이이! 투!
 import numpy as np
 
 print(__doc__) # 프로그램 설명을 콘솔에 표시. TODO:어이야...왜 이거 한글이 깨지냐!!! !)@*(&$)*&!@#
-
+# 랩탑용
 #VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/resources/videos/sample_video.mp4' # 실행시킬 비디오파이이일!
-VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/resources/videos/sample_video_2.mp4' # 실행시킬 비디오파이이일!
+#VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/resources/videos/sample_video_2.mp4' # 실행시킬 비디오파이이일!
+
+# 데스크탑용
+VIDEO_FILE_PATH = u'../resources/videos/20170923_153612.mp4' # 실행시킬 비디오파이이일!
+IMAGE_SAVE_PATH = u'../resources/videos/20170923_152612/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
+
 IS_THREAD_ENABLE = False
 IS_DEBUG_SCREEN_ENABLE = False
 IS_PLAY_PAUSED = False

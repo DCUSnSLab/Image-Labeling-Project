@@ -30,17 +30,22 @@ print(__doc__) # 프로그램 설명을 콘솔에 표시. TODO:어이야...왜 �
 """
 시작하기 전에 꼭 비디오 경로와 저장 경로 정확하게 입력해주세요. 틀리면 창이 켜지지 않거나 이미지가 저장이 안되요;ㅂ;
 """
-VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/resources/videos/sample_video_2.mp4' # 실행시킬 비디오파이이일!
-IMAGE_SAVE_PATH = u'D:/Downloads/example/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
+# 랩탑용
+#VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/resources/videos/sample_video_2.mp4' # 실행시킬 비디오파이이일!
+#IMAGE_SAVE_PATH = u'D:/Downloads/example/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
+
+# 데스크탑용
+VIDEO_FILE_PATH = u'../resources/videos/20170923_153612.mp4' # 실행시킬 비디오파이이일!
+IMAGE_SAVE_PATH = u'C:/Users/yooer/Documents/GitHub/Image-Labeling-project/learner/resources/images/20170923_153612/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
 
 # TODO: 왜... 상대 경로가 안먹히는거야 ㅠㅠㅠㅠㅠㅠㅠㅠㅠ
 #VIDEO_FILE_PATH = '../resources/videos/sample_video.mp4' # 실행시킬 비디오파이이일!
 #IMAGE_SAVE_PATH = '../resources/images/extracted_images/' # 저장될 파일 경로~!
 WINDOW_TITLE = 'Video to image saver using CPU Threading' # 화면 창 제목
 
-IS_THREAD_ENABLE = False # 스레드 플래그
+IS_THREAD_ENABLE = False # 멀티프로세싱 활성화 플래그
 IS_DEBUG_SCREEN_ENABLE = False # 디버그 스크린 플래그
-IS_PLAY_PAUSED = False # 일시정지 플레그
+IS_PLAY_PAUSED = False # 일시정지/재생 플레그
 IS_SAVE_IMAGE_ENABLE = False # 저장 시작 플레그
 
 class DummyThreadTask(object):
@@ -255,5 +260,5 @@ if __name__ == '__main__':
                 DEBUGGER.add('Pending / Max     : ' + str(len(THREAD_CONTAINER)) + '/' + str(THREAD_COUNTS))
                 DEBUGGER.add('Current Frame     : '+ str(FRAME_COUNTER))
             cv2.imshow(WINDOW_TITLE, DEBUGGER.write_on_frame(_PAUSED_FRAME)) # 디버그 메세지 추가된 프레임 넣기
-#VIDEO.release() # 비디오 파일 잠금 해제
+    VIDEO.release() # 비디오 파일 잠금 해제
 cv2.destroyAllWindows() # 화면 끄기
