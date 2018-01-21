@@ -34,7 +34,7 @@ VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/res
 IMAGE_SAVE_PATH = u'D:/Downloads/example/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
 
 # TODO: 왜... 상대 경로가 안먹히는거야 ㅠㅠㅠㅠㅠㅠㅠㅠㅠ
-#VIDEO_FILE_PATH = '../resources/videos/sample_video_2.mp4' # 실행시킬 비디오파이이일!
+#VIDEO_FILE_PATH = '../resources/videos/sample_video.mp4' # 실행시킬 비디오파이이일!
 #IMAGE_SAVE_PATH = '../resources/images/extracted_images/' # 저장될 파일 경로~!
 WINDOW_TITLE = 'Video to image saver using CPU Threading' # 화면 창 제목
 
