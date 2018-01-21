@@ -19,8 +19,10 @@ https://github.com/opencv/opencv/blob/master/samples/python/video_threaded.py
     * 버튼 누르는 방법에 순서가 없슴당!
     
     t - 멀티 프로세싱 활성화
-    탭 키 - 디버깅 창 표시
-    스페이스바 - 일시정지
+    탭(tab) 키 - 디버깅 창 표시
+    + - 디버깅 폰트 크기 키우기
+    _ - 디버깅 폰트 크기 줄이기
+    스페이스바 - 일시정지/재생
     ESC, q - 프로그램 종료~!
 
 """
