@@ -12,6 +12,8 @@ learner/resources/videos/20170923_153612.mp4
 learner/sandbox/opencv/
 ## 실행 예제 프로그램
 learner/resources/videos/sample_video_2.mp4
+## 이미지 예제
+learner/resources/images/*
 
 # 크롤링
 
