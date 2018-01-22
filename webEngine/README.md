@@ -14,8 +14,8 @@
 > 
 > **하드웨어**
 > 노트북 : 삼성 노트북 9 Always
->> CPU : Intel i5-7200U
->> M/M : 8GB
+> CPU : Intel i5-7200U
+> M/M : 8GB
 
 ## 프로그램 구성
 
