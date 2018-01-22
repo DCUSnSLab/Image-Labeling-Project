@@ -20,6 +20,10 @@
                 font-weight:300;
                 line-height:1.2
             }
+            .lead{
+                font-size:2rem;
+                font-weight:200
+            }
         </style>
     </head>
     <body class="main">
@@ -28,16 +32,20 @@
                 "Web for Image Classification EX"
             </a>
         </nav>
+        <!-- Title Box -->
         <div class="jumbotron text-center">
             <h1 class="display-5"> title </h1>
             <p class="lead">
                 "subtitle"
             </p>
         </div>
+        <!-- Main Box -->
         <div class="container">
             <div class="row">
+                <!-- Image Box -->
                 <div class="col-12 col-md-9">
                 </div>
+                <!-- Tag Box -->
                 <div class="col-12 col-md-3">
                 </div>
             </div>
