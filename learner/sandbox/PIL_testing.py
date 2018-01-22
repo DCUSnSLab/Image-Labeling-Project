@@ -3,7 +3,7 @@
 저자 : 안광은 (yooer10ms@cu.ac.kr)
 버전 : python 3.5.4, PyQt 5.9.0
 
-PIL 라이브러리 테스팅! 
+PIL 라이브러리 테스팅! 참고하고 있는 Tensorflow 소스코드가 이미지 읽을 때 PIL라이브러리를 자주 불러오기에 설치하면서 간단히 기능을 테스트 해봤습니다~!
 
 PIL을 사용하기 위해서 Pillow 패키지를 설치해야됨~
 pip install Pillow
