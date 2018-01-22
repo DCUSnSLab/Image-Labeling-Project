@@ -27,6 +27,7 @@
         </style>
     </head>
     <body class="main">
+        <!-- Menu Bar -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="./index.php">
                 "Web for Image Classification EX"
@@ -41,6 +42,7 @@
         </div>
         <!-- Main Box -->
         <div class="container">
+            <!-- Center -->
             <div class="row">
                 <!-- Image Box -->
                 <div class="col-12 col-md-9">
