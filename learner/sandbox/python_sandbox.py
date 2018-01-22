@@ -8,17 +8,15 @@
 """
 
 # 문자열(string) 합치기(concatenation) 테스트
-
 # + 사용해서 합쳐보기
 str_1 = 'testing'
 str_2 = 'a concatenation'
 print(str_1 + str_2) # 진짜 잘됨 ㅇㅅㅇ
-
 # 중간에 고정 문자 끼워보기
 print(str_1 + ' ' + str_2) # 제대로 잘됨 ㅇㄴㅇ~
 
 # 반복문 사용하기~
-for x in range(0, 20): # foreach 문 숫자 올라가는거 테스트해보기
+for x in range(0, 5): # foreach 문 숫자 올라가는거 테스트해보기
     print(x)
 
 # 조건문 해보기 
