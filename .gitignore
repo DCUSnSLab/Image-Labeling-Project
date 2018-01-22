@@ -14,6 +14,8 @@ learner/sandbox/opencv/
 learner/resources/videos/sample_video_2.mp4
 ## 이미지 예제
 learner/resources/images/*
+## Tensorflow Python 소스코드 축약 버전
+learner/sandbox/tensorflow/
 
 # 크롤링
 
