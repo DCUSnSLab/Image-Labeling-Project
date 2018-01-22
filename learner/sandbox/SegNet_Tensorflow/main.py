@@ -7,28 +7,21 @@
 하 슈밤... 그냥 내가 짠다.... 써글 ㅠㅠ 울고싶네 ㅠㅠ...
 
 레퍼런스:
-https://github.com/tkuanlun350/Tensorflow-SegNet
-https://github.com/alexgkendall/SegNet-Tutorial
 https://github.com/mathildor/TF-SegNet
-https://github.com/andreaazzini/segnet.tf
-https://github.com/arahusky/Tensorflow-Segmentation
-
+https://github.com/mshunshin/SegNetCMR
 
 """
 
 # Tensorflow 함수
 import tensorflow as tf # 텐서플로 라이브러리 불러오기 
-from tensorlfow.python.framework import ops # 연산작업 라이브러리
-from tensorflow.python.framework import dtypes # 데이터 타입 라이브러리
-from tensorflow.python.ops import gen_nn_ops
 
 # 파이선 내장 함수
-from datetime import datetime
-from PIL import Image
-from math import ceil
-import os, sys
-import numpy as np
-import math
-import time
+from datetime import datetime # 날짜 시간 함수
+from PIL import Image # Pillow 이미지 라이브러리
+from math import ceil # 수학 라이브러리 반올림 함수
+import os, sys # 운영체제 및 시스템 라이브러리
+import numpy as np # 과학 계산용 라이브러리
+import math # 수학 라이브러리 ~ 근데 어째 위에 반올림 함수 부르는데 쓰인듯 한데 왜 따로 또 불럿지..?
+import time # 시간 라이브러리
 
 

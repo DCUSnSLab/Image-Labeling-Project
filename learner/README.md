@@ -71,12 +71,22 @@ Tensorflow 예제에서 Python Pillow 이미지 라이브러리를 사용해서 
 pip install pillow
 ```
 
+* **Tensorflow Source Code**
+
+SegNet_Tensorflow를 구성할 때 Tensorflow 소스코드를 일부 사용합니닷. 그러니.. SegNet_Tensorflow작업 폴더에 넣어주세요.. (이거 너무 커 ㅠㅠ)
+
+```bash
+git clone https://github.com/tensorflow/tensorflow.git
+```
+
 ## 프로그램 구성
 
 ### 디렉토리 구성
 
 ```None
 ./sandbox                                           # 테스트 코드 폴더
+    ./SegNet_Tensorflow                             # SegNet의 Tensorflow 버전
+        main.py                                     # SegNet 메인 함수
     ./resources                                     # 테스트용 파일들~!
         ./videos                                    # 비디오 파일들
             sample_video.mp4                        # 연습용 비디오 파일

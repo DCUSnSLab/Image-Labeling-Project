@@ -5,15 +5,13 @@
 ## Visual Studio Code 환경 설정 파일 
 .vscode/*
 ## SegNet for tensorflow 소스코드
-learner/sandbox/Tensorflow-SegNet/
+learner/sandbox/TF-SegNet/
 ## 테스트용 비디오 파일
 learner/resources/videos/20170923_153612.mp4
 ## OpenCV 소스코드
 learner/sandbox/opencv/
 ## 실행 예제 프로그램
 learner/resources/videos/sample_video_2.mp4
-## Tensorflow Python 소스코드 축약 버전
-learner/sandbox/tensorflow/
 
 # 크롤링
 
