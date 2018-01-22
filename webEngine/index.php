@@ -28,7 +28,7 @@
     </head>
     <body class="main">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="/var/www/html/Image-Labeling-Project/webEngine">
+            <a class="navbar-brand" href="./index.php">
                 "Web for Image Classification EX"
             </a>
         </nav>
