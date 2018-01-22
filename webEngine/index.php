@@ -17,5 +17,9 @@
     </head>
     <body class="page-bootswatch">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/?theme=2">
+                "Web for Image Classification EX"
+            </a>
+        </nav>
     </body>
 </html>
