@@ -10,8 +10,17 @@
 -->
 <!-- bootstrap theme "Cyborg"-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/cyborg/bootstrap.min.css">
-<link rel="stylesheet" href="default.css" type="text/css" />
-<script type="text/javascript" src="default.js"></script>
+<style>
+.title{
+    font-size:3rem;
+    font-weight:300;
+    line-height:1.2
+}
+.subtitle{
+    font-size:2rem;
+    font-weight:200
+}
+</style>
 <html>
     <head>
         <meta charset-"utf-8">
