@@ -11,58 +11,78 @@
 <!-- bootstrap theme "Cyborg"-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/cyborg/bootstrap.min.css">
 <style>
-.title{
-    font-size:3rem;
-    font-weight:300;
-    line-height:1.2
-}
-.subtitle{
-    font-size:2rem;
-    font-weight:200
-}
+    .title{
+        font-size:3rem;
+        font-weight:300;
+        line-height:1.2
+    }
+    .subtitle{
+        font-size:2rem;
+        font-weight:200
+    }
 </style>
 <html>
     <head>
         <meta charset-"utf-8">
     </head>
     <body>
-        <!-- Menu Bar -->
+        <!-- Menu Bar Area -->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!-- Title Menu -->
             <a class="navbar-brand" href="./index.php">
                 "Web for Image Classification EX"
             </a>
         </nav>
-        <!-- Title Box -->
+        <!-- Title Area -->
         <div class="jumbotron text-center">
+            <!-- Title -->
             <h1 class="title"> title </h1>
-            <p class="subtitle">
-                "subtitle"
-            </p>
+            <!-- Subtitle -->
+            <p class="subtitle"> "subtitle" </p>
         </div>
-        <!-- Main Box -->
+        <!-- Main Page Area -->
         <div class="container">
-            <!-- ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
-            <p><span id="countdowntimer"> 60 </span> Seconds later</p>
+            <!-- CountDown 60sec
+                 ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
+            <p class="right"><span id="countdowntimer"> 60 </span> Seconds later</p>
             <script type="text/javascript">
                 var timeleft = 60;
-                var downloadTimer = setInterval(function(){
+                var countdown = setInterval(function(){
                     timeleft--;
                     document.getElementById("countdowntimer").textContent = timeleft;
                     if(timeleft <= 0)
-                        clearInterval(downloadTimer);
+                        clearInterval(countdown);
                 },1000);
             </script>
-            <!-- Center -->
+            <!-- Center Frame -->
             <div class="row">
-                <!-- Image Box -->
+                <!-- Image Area -->
                 <div class="col-12 col-md-9">
+                    <!-- Image Box -->
+                    <div class="card bg-light my-4 p-4 text-center">
+                        <div class="row">
+                            <form name="Tagtext" action="./index.php" method="post" onsubmit="return validate(this);">
+                                <div>Answer:
+                                    <input type="text" name="tag" id="tag" size="100" /> &nbsp;
+                                </div>
+                            </form>
+                            <script type="text/javascript">
+                                document.Tagtext.tag.focus();
+                            </script>
+                        </div>
+                    </div>
                 </div>
-                <!-- Tag Box -->
+                <!-- Tag Area -->
                 <div class="col-12 col-md-3">
+                    <div class="row">
+                        <!-- Tag Box -->
+                        <div class="col-12 d-none d-lg-block">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- tail text -->
+        <!-- Tail Text Area -->
         <footer class="mt-5 py-4 text-center">
             <div class="container">
                 <div class="row">
