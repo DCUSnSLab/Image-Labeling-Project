@@ -11,6 +11,7 @@
 <!-- bootstrap theme "Cyborg"-->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/cyborg/bootstrap.min.css">
 <link rel="stylesheet" href="default.css" type="text/css" />
+<script type="text/javascript" src="default.js"></script>
 <html>
     <head>
         <meta charset-"utf-8">
@@ -31,15 +32,10 @@
         </div>
         <!-- Main Box -->
         <div class="container">
+            <!-- ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
             <p><span id="countdowntimer"> 60 </span> Seconds later</p>
             <script type="text/javascript">
-                var timeleft = 60;
-                var downloadTimer = setInterval(function(){
-                    timeleft--;
-                    document.getElementById("countdowntimer").textContent = timeleft;
-                    if(timeleft <= 0)
-                        clearInterval(downloadTimer);
-                },1000);
+                var countdowntimer = setInterval(Countdown(60),1000);
             </script>
             <!-- Center -->
             <div class="row">
