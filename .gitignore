@@ -13,7 +13,7 @@
 ## 숨김파일 제거
 .*
 ## 저작권 관련 논문 제거
-.Papers/*
+Papers/*
 
 # 기계학습
 .vscode/launch.json
