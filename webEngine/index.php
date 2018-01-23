@@ -35,7 +35,7 @@
             <!-- ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
             <p><span id="countdowntimer"> 60 </span> Seconds later</p>
             <script type="text/javascript" src="default.js">
-                var countdowntimer = setInterval(Countdowntimer(60),1000);
+                var countdowntimer = setInterval(Countdown(60),1000);
             </script>
             <!-- Center -->
             <div class="row">

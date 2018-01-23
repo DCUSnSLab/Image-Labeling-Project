@@ -1,4 +1,4 @@
-function countdowntimer(t_Limit){
+function countdown(t_Limit){
     t_Limit--;
     document.getElementById("countdowntimer").textcontent = timeleft;
     if(t_Limit <= 0)
