@@ -34,8 +34,14 @@
         <div class="container">
             <!-- ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
             <p><span id="countdowntimer"> 60 </span> Seconds later</p>
-            <script type="text/javascript" src="default.js">
-                var countdowntimer = setInterval(Countdown(60),1000);
+            <script type="text/javascript">
+                var timeleft = 60;
+                var downloadTimer = setInterval(function(){
+                    timeleft--;
+                    document.getElementById("countdowntimer").textContent = timeleft;
+                    if(timeleft <= 0)
+                        clearInterval(downloadTimer);
+                },1000);
             </script>
             <!-- Center -->
             <div class="row">
