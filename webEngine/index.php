@@ -20,6 +20,13 @@
         font-size:2rem;
         font-weight:200
     }
+    .continue {
+        font-weight: bold;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+    }
 </style>
 <html>
     <head>
@@ -38,13 +45,13 @@
             <!-- Title -->
             <h1 class="title"> title </h1>
             <!-- Subtitle -->
-            <p class="subtitle"> "subtitle" </p>
+            <p class="subtitle"> subtitle </p>
         </div>
         <!-- Main Page Area -->
         <div class="container">
-            <!-- CountDown 60sec
+            <!-- CountDown 60sec Script
                  ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
-            <p class="right"><span id="countdowntimer"> 60 </span> Seconds later</p>
+            <p class="text-right"><span id="countdowntimer"> 60 </span> Seconds later</p>
             <script type="text/javascript">
                 var timeleft = 60;
                 var countdown = setInterval(function(){
@@ -61,9 +68,12 @@
                     <!-- Image Box -->
                     <div class="card bg-light my-4 p-4 text-center">
                         <div class="row">
+                            <!-- Tag Input Box -->
                             <form name="Tagtext" action="./index.php" method="post" onsubmit="return validate(this);">
                                 <div>Answer:
                                     <input type="text" name="tag" id="tag" size="100" /> &nbsp;
+                                    <!-- Continue Button -->
+                                    <input type="submit" value="Continue" id="continueButton" class="continue" /> &nbsp;
                                 </div>
                             </form>
                             <script type="text/javascript">
@@ -72,11 +82,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- Tag Area -->
+                <!-- Recommend Tag Area -->
                 <div class="col-12 col-md-3">
                     <div class="row">
-                        <!-- Tag Box -->
+                        <!-- Recommend Tag Box -->
                         <div class="col-12 d-none d-lg-block">
+                            <div class="card bg-light text-center">
+                                Recommend Tag Area
+                            </div>
                         </div>
                     </div>
                 </div>
