@@ -35,8 +35,8 @@ print(__doc__) # 프로그램 설명을 콘솔에 표시. TODO:어이야...왜 �
 #IMAGE_SAVE_PATH = u'D:/Downloads/example/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
 
 # 데스크탑용
-VIDEO_FILE_PATH = u'../resources/videos/20170923_153612.mp4' # 실행시킬 비디오파이이일!
-IMAGE_SAVE_PATH = u'C:/Users/yooer/Documents/GitHub/Image-Labeling-project/learner/resources/images/20170923_153612/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
+VIDEO_FILE_PATH = u'C:/Users/yooer/Documents/GitHub/Image-Labeling-project/learner/resources/videos/20170923_153612.mp4' # 실행시킬 비디오파이이일!
+IMAGE_SAVE_PATH = u'C:/Users/yooer/Downloads/compressed_with_jpeg_20170923_153612/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
 
 # TODO: 왜... 상대 경로가 안먹히는거야 ㅠㅠㅠㅠㅠㅠㅠㅠㅠ
 #VIDEO_FILE_PATH = '../resources/videos/sample_video.mp4' # 실행시킬 비디오파이이일!
@@ -187,8 +187,9 @@ def process_frame(frame, frame_counter):
     """
     
     if IS_SAVE_IMAGE_ENABLE is True: # 프레임을 이미지로 저장하기
-        _image_save_name = IMAGE_SAVE_PATH+'example_'+str(frame_counter)+'.png' # 저장 이름, 경로에서 폴더가 없는 경우 파일이 저장되지 않음!
-        cv2.imwrite(_image_save_name, frame) #오픈쒸브이 이미지 저장하기
+        _image_save_name = IMAGE_SAVE_PATH+'example_'+str(frame_counter)+'.jpg' # 저장 이름, 경로에서 폴더가 없는 경우 파일이 저장되지 않음!
+        #cv2.imwrite(_image_save_name, frame) #오픈쒸브이 이미지 저장하기. 이거 용량 미치는데..? 1920x1080 png 저장하는데 개당 거의 3MB 나와서 당황;;
+        cv2.imwrite(_image_save_name, frame, [int(cv2.IMWRITE_JPEG_QUALITY),100]) # 이제 용량을 줄이쟈!!!!!!!!!!JPEG 를 사용하는거야!! 옵션에 대한 실험 데이터는 opencv_image_saving_with_compression.py 에서 확인해보기!
     return frame, None
 
 """
