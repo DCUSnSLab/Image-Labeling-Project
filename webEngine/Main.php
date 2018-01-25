@@ -49,7 +49,7 @@
         </div>
         <!-- Main Page Area -->
         <div class="container">
-            <!-- CountDown 60sec Script
+            <!-- CountDown 60sec javaScript
                  ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
             <p class="text-right"><span id="countdowntimer"> 60 </span> Seconds later</p>
             <script type="text/javascript">
@@ -71,9 +71,9 @@
                             <!-- Tag Input Box -->
                             <form name="Tagtext" action="./index.php" method="post" onsubmit="return validate(this);">
                                 <div>Answer:
-                                    <input type="text" name="tag" id="tag" size="100" /> &nbsp;
-                                    <!-- Continue Button -->
-                                    <input type="submit" value="Continue" id="continueButton" class="continue" /> &nbsp;
+                                    <input type="text" name="tag" id="tag" size="50" />
+                                    <!-- Tag Input Button -->
+                                    <input type="submit" value="Continue" id="continueButton" class="continue" />
                                 </div>
                             </form>
                             <script type="text/javascript">
