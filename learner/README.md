@@ -63,12 +63,30 @@ opencv 및 tensorflow는 수식 표현 라이브러리인 numpy가 필수입니�
 pip install numpy
 ```
 
+* **Pillow**
+
+Tensorflow 예제에서 Python Pillow 이미지 라이브러리를 사용해서 이미지에 대한 정보를 호출하더군요.. 그래서 가능하면 설치해줍니닷 ;ㅂ;...
+
+```bash
+pip install pillow
+```
+
+* **Tensorflow Source Code**
+
+SegNet_Tensorflow를 구성할 때 Tensorflow 소스코드를 일부 사용합니닷. 그러니.. SegNet_Tensorflow작업 폴더에 넣어주세요.. (이거 너무 커 ㅠㅠ)
+
+```bash
+git clone https://github.com/tensorflow/tensorflow.git
+```
+
 ## 프로그램 구성
 
 ### 디렉토리 구성
 
 ```None
 ./sandbox                                           # 테스트 코드 폴더
+    ./SegNet_Tensorflow                             # SegNet의 Tensorflow 버전
+        main.py                                     # SegNet 메인 함수
     ./resources                                     # 테스트용 파일들~!
         ./videos                                    # 비디오 파일들
             sample_video.mp4                        # 연습용 비디오 파일
@@ -78,6 +96,7 @@ pip install numpy
     opencv_video_loading.py                         # 비디오 재생하기
     opencv_video_to_image_saver_using_threading.py  # 멀티프로세스 사용 비디오 재생 및 저장하기
     opencv_video_to_image_saver.py                  # 비디오 이미지로 저장하기
+    PIL_testing.py                                  # Tensorflow 예제에서 자주 사용하는 Pillow 라이브러리 테스팅
     pyqt5_testing.py                                # PyQt 5.9 라이브러리 GUI 테스트
     python_sandbox.py                               # 파이선 문법 자꾸 잊어먹어서;ㅂ;
     tensorflow_example.py                           # 텐서플로 예제 및 테스트 코드
