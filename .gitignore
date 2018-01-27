@@ -1,6 +1,7 @@
 # 깃(Git)에 올리지 말아야될 파일 및 디렉토리를 지정합니다.
 # 각 폴더별로도 .gitignore을 생성하여 제어할 수 있습니다.
 
+
 # 기계학습
 ## Visual Studio Code 환경 설정 파일 
 .vscode/*
@@ -16,3 +17,4 @@ learner/resources/videos/sample_video_2.mp4
 # 크롤링
 
 # UI
+webEngine/UI_test/
