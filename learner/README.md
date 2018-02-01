@@ -50,6 +50,7 @@ Nvidia GPU를 가지고 있는 경우 세심하게 읽어보면서 설치해주�
 OpenCV 공식 사이트는 2.7 버전만 업데이트 해주어서... 빌드하기는 귀찮으니 CPU버전을 다운받아 줍니닷.! 사용하는 운영체제 버전 확인하고 설치해주세요~ Contrib 버전으로 설치해줍니다~!
 
 [Python 3.5.4용 OpenCV 3.4.0 설치 스크립트](https://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv)
+[Opencv 3.4.0 Python Documentation](https://docs.opencv.org/3.4.0/d6/d00/tutorial_py_root.html)
 
 ```bash
 pip install <다운로드받은 스크립트>.whl
