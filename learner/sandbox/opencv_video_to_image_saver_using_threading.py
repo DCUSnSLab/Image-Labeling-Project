@@ -173,13 +173,13 @@ def process_frame(frame, frame_counter):
 
         frame: 영상의 프레임! 스레드에 들어가는 경우 개별적으로 처리해야 하기에 .copy()를 사용하여 넣어주기!
 
-        frame_counter: 프레임 번호 받아오기! 프레임을 이미지로 저장할 때 사용하기 위한 용도~
+        frame_counter: 프레임 번호 받아오기! 프레임을 이미지로 저장할 때 숫자로 구분하여 저장하기위한 용도~
 
     Return:
 
         frame: 조작된(?) 프레임 반환~!
 
-        None: frame 변수를 전부 분해해버리는 파이썬 변수 처리를 막기 위한 더미 변수
+        None: frame 변수를 전부 분해해버리는(?) 파이썬 변수 처리를 막기 위한 더미 변수
 
     레퍼런스:
 
@@ -235,10 +235,10 @@ if __name__ == '__main__':
                 _PAUSED_FRAME = frame.copy() # 정지화면용으로 복사해두기
                 if IS_DEBUG_SCREEN_ENABLE is True: # 디버그 메세지 추가하기
                     if IS_SAVE_IMAGE_ENABLE is True:
-                        DEBUGGER.add('!Saving is now on!!!')
-                    DEBUGGER.add('Multiprocessing    : ' + str(IS_THREAD_ENABLE))
-                    DEBUGGER.add('Pending / Max     : ' + str(len(THREAD_CONTAINER)) + '/' + str(THREAD_COUNTS))
-                    DEBUGGER.add('Current Frame     : '+ str(FRAME_COUNTER))
+                        DEBUGGER.add('!Saving is now on!!!') # 디버깅 화면에 저장중이라는 메세지 추가아~
+                    DEBUGGER.add('Multiprocessing    : ' + str(IS_THREAD_ENABLE)) # 프로세스 사용 상태 표시
+                    DEBUGGER.add('Pending / Max     : ' + str(len(THREAD_CONTAINER)) + '/' + str(THREAD_COUNTS)) # 현재 처리대기 중인 프레임과 최대 처리량 표시~!
+                    DEBUGGER.add('Current Frame     : '+ str(FRAME_COUNTER)) # 현재 프레임 번호 보여주기!
                 cv2.imshow(WINDOW_TITLE, DEBUGGER.write_on_frame(frame)) # 화면 보여주기!
             if len(THREAD_CONTAINER) < THREAD_COUNTS: # 스레드에 공간이 있다면 작업 넣기~
              #일시정지 안 했을때만 작업하기~
