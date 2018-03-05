@@ -19,3 +19,5 @@ learner/resources/videos/sample_video_2.mp4
 # UI
 ## UI 테스트용 폴더 (다른 저장소 이용(연구실yona))
 webEngine/UI_test/
+## UI 테스트용 폴더 (python Django 사용)
+webEngine/Web_Python/*
