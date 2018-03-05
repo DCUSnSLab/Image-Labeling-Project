@@ -36,17 +36,15 @@
     <meta charset="utf-8">
     <!-- bootstrap theme "Cyborg"-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0-beta.3/cyborg/bootstrap.min.css">
-    <!-- annotorious https://annotorious.github.io/getting-started.html -->
-    <link type="text/css" rel="stylesheet" href="css/annotorious.css" />
-    <script type="text/javascript" src="annotorious.min.js"></script>
-    <script>
-        function init() {
-            anno.makeAnnotatable(document.getElementById('myImage'));
-        }
-    </script>
+    <!-- Annotorious -->
+    <link rel="stylesheet" type="text/css" href="css/annotorious.css" />
+    <script type="text/javascript" src="css/annotorious.min.js"></script>
+    <link rel='stylesheet' href='http://assets.annotateit.org/annotator/v1.2.5/annotator.min.css'>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js'></script>
+    <script src='http://assets.annotateit.org/annotator/v1.2.5/annotator-full.min.js'></script> 
 </head>
 
-<body onload="init();" >
+<body>
     <!-- Title Bar Area -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <!-- Title Menu -->
@@ -64,7 +62,7 @@
     <!-- Main Page Area -->
     <div class="container">
         <!-- CountDown 60sec javaScript
-                     ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
+                             ref : https://stackoverflow.com/questions/31106189/create-a-simple-10-second-countdown -->
         <p class="text-right">
             <span id="countdowntimer"> 60 </span> Seconds later</p>
         <script type="text/javascript">
@@ -83,7 +81,7 @@
                 <!-- Image Box -->
                 <div class="card bg-light my-4 p-4 text-center">
                     <div class="row">
-                        <img src="img/ex1.png" id="myImage" />
+                        <img src="img/ex1.png" class="annotatable" />
                     </div>
                 </div>
             </div>
@@ -112,6 +110,13 @@
                 </div>
             </div>
         </footer>
+        <script>
+            window.onload = function () {
+                $(document.body).annotator()
+                    .annotator('addPlugin', 'AnnotoriousImagePlugin');
+            }
+        </script>
+        <script src="css/annotorious.okfn.0.3.js"></script>
 </body>
 
 </html>
