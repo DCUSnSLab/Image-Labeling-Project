@@ -1,5 +1,5 @@
 """
-파이선 openCV 스레드 사용 비디오 이미지 저장 
+파이선 openCV 스레드 사용 차선 탐지 프로그램 
 저자 : 안광은 (yooer10ms@cu.ac.kr)
 버전 : python 3.5.4, opencv 3.4.0
 
@@ -32,15 +32,20 @@ print(__doc__) # 프로그램 설명을 콘솔에 표시. TODO:어이야...왜 �
 """
 시작하기 전에 꼭 비디오 경로와 저장 경로 정확하게 입력해주세요. 틀리면 창이 켜지지 않거나 이미지가 저장이 안되요;ㅂ;
 """
+# 랩탑용
+#VIDEO_FILE_PATH = u'D:/OneDrive/문서/GitHub/Image-Labeling-Project/learner/resources/videos/sample_video_2.mp4' # 실행시킬 비디오파이이일!
+#IMAGE_SAVE_PATH = u'D:/Downloads/example/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
 
 # 데스크탑용
 WORKING_DIR_PATH = u'C:/Users/yooer/Downloads/driving/'
-file_name = u'20170416_082838'
+file_name = u'20170430_092907'
 VIDEO_FILE_PATH = WORKING_DIR_PATH+file_name+'.mp4' # 실행시킬 비디오파이이일!
 IMAGE_SAVE_PATH = WORKING_DIR_PATH+file_name+'/' # 저장될 파일 경로~! 원드라이브 경로가 안먹히는데... 이유를 모르겠다 ;ㅂ;...
-
+VIDEO_SAVE_PATH = WORKING_DIR_PATH+file_name+'testing.mp4'
 # TODO: 왜... 상대 경로가 안먹히는거야 ㅠㅠㅠㅠㅠㅠㅠㅠㅠ
-WINDOW_TITLE = 'Video to image saver using CPU Multi-processing' # 화면 창 제목
+#VIDEO_FILE_PATH = '../resources/videos/sample_video.mp4' # 실행시킬 비디오파이이일!
+#IMAGE_SAVE_PATH = '../resources/images/extracted_images/' # 저장될 파일 경로~!
+WINDOW_TITLE = 'Video to image saver using CPU Threading' # 화면 창 제목
 
 IS_THREAD_ENABLE = False # 멀티프로세싱 활성화 플래그
 IS_DEBUG_SCREEN_ENABLE = False # 디버그 스크린 플래그
@@ -161,6 +166,70 @@ class TextOnScreen(object):
             cv.putText(_frame, _tmp_str.decode('utf-8'), (self.display_x, self.display_y + _interval), cv.FONT_HERSHEY_PLAIN, self.display_text_size, (255, 255, 255), thickness = self.display_text_thickness, lineType= cv.LINE_AA)
         self._container.clear() # 글자 출력하면 디버깅 메세지 컨테이너 비우기
         return _frame # 디버깅 메세지가 적어진 프레임을 반환합니닷~
+
+def draw_lines(img, lines, color=[255, 0, 0], thickness=2):
+    """
+    NOTE: this is the function you might want to use as a starting point once you want to
+    average/extrapolate the line segments you detect to map out the full
+    extent of the lane (going from the result shown in raw-lines-example.mp4
+    to that shown in P1_example.mp4).
+    Think about things like separating line segments by their
+    slope ((y2-y1)/(x2-x1)) to decide which segments are part of the left
+    line vs. the right line.  Then, you can average the position of each of
+    the lines and extrapolate to the top and bottom of the lane.
+    This function draws `lines` with `color` and `thickness`.
+    Lines are drawn on the image inplace (mutates the image).
+    If you want to make the lines semi-transparent, think about combining
+    this function with the weighted_img() function below
+    """
+    for line in lines:
+        for x1,y1,x2,y2 in line:
+            cv.line(img, (x1, y1), (x2, y2), color, thickness)
+
+def region_of_interest(img, vertices):
+    """
+    Applies an image mask.
+    Only keeps the region of the image defined by the polygon
+    formed from `vertices`. The rest of the image is set to black.
+    """
+    #defining a blank mask to start with
+    mask = np.zeros_like(img)
+
+    #defining a 3 channel or 1 channel color to fill the mask with depending on the input image
+    if len(img.shape) > 2:
+        channel_count = img.shape[2]  # i.e. 3 or 4 depending on your image
+        ignore_mask_color = (255,) * channel_count
+    else:
+        ignore_mask_color = 255
+
+    #filling pixels inside the polygon defined by "vertices" with the fill color
+    cv.fillPoly(mask, vertices, ignore_mask_color)
+
+    #returning the image only where mask pixels are nonzero
+    masked_image = cv.bitwise_and(img, mask)
+    return masked_image
+
+def weighted_img(img, initial_img, α=0.8, β=1., λ=0.):
+    """
+    `img` is the output of the hough_lines(), An image with lines drawn on it.
+    Should be a blank image (all black) with lines drawn on it.
+    `initial_img` should be the image before any processing.
+    The result image is computed as follows:
+    initial_img * α + img * β + λ
+    NOTE: initial_img and img must be the same shape!
+    """
+    return cv.addWeighted(initial_img, α, img, β, λ)
+
+def hough_lines(img, rho, theta, threshold, min_line_len, max_line_gap):
+    """
+    `img` should be the output of a Canny transform.
+    Returns an image with hough lines drawn.
+    """
+    lines = cv.HoughLinesP(img, rho, theta, threshold, np.array([]), minLineLength=min_line_len, maxLineGap=max_line_gap)
+    line_img = np.zeros((img.shape[0], img.shape[1], 3), dtype=np.uint8)
+    draw_lines(line_img, lines)
+    return line_img
+
 def process_frame(frame, frame_counter):
     """
     영상을 조작하기(?) 위한 함수~! 여기에다가 각 프레임에 적용할 필터나 기능을 추가하면 됨이이~!
@@ -186,11 +255,48 @@ def process_frame(frame, frame_counter):
     """
     
 
+    #차선 탐지 알고리즘 
+    #레퍼런스 : https://medium.com/@galen.ballew/opencv-lanedetection-419361364fc0
+    img_hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV) # 컬러 영상을 회색조 영상으로 변환
+    gray_image = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+    # 픽셀 이미지중 흰색이나 노란색이 아닌 경우 검은색으로 설정
+    lower_yellow = np.array([20, 100, 100], dtype="uint8")
+    upper_yellow = np.array([30, 255, 255], dtype="uint8")
+    mask_yellow = cv.inRange(img_hsv, lower_yellow, upper_yellow)
+    mask_white = cv.inRange(gray_image, 200, 255)
+    mask_yw = cv.bitwise_or(mask_white, mask_yellow)
+    mask_yw_image = cv.bitwise_and(gray_image, mask_yw)
+
+    kernel_size = 5
+    gauss_gray = cv.GaussianBlur(mask_yw_image,(kernel_size, kernel_size), 0)
+
+    low_threshold = 50
+    high_threshold = 150
+    canny_edges = cv.Canny(gauss_gray, low_threshold, high_threshold)
+
+    imshape = frame.shape
+    lower_left = [imshape[1]/9,imshape[0]]
+    lower_right = [imshape[1]-imshape[1]/9,imshape[0]]
+    top_left = [imshape[1]/2-imshape[1]/8,imshape[0]/2+imshape[0]/10]
+    top_right = [imshape[1]/2+imshape[1]/8,imshape[0]/2+imshape[0]/10]
+    vertices = [np.array([lower_left,top_left,top_right,lower_right],dtype=np.int32)]
+    roi_image = region_of_interest(canny_edges, vertices)
+    
+    rho = 2
+    theta = np.pi/180
+    #threshold is minimum number of intersections in a grid for candidate line to go to output
+    threshold = 20
+    min_line_len = 50
+    max_line_gap = 200
+    
+    line_image = hough_lines(roi_image, rho, theta, threshold, min_line_len, max_line_gap)
+    frame = weighted_img(line_image, frame, α=0.8, β=1., λ=0.)
+    frame = cv.resize(frame, (960, 540)) 
 
     if IS_SAVE_IMAGE_ENABLE is True: # 프레임을 이미지로 저장하기
-        _image_save_name = IMAGE_SAVE_PATH+file_name+'_'+str(frame_counter)+'.jpg' # 저장 이름, 경로에서 폴더가 없는 경우 파일이 저장되지 않음!
+        _image_save_name = IMAGE_SAVE_PATH+'example_'+str(frame_counter)+'.jpg' # 저장 이름, 경로에서 폴더가 없는 경우 파일이 저장되지 않음!
         #cv.imwrite(_image_save_name, frame) #오픈쒸브이 이미지 저장하기. 이거 용량 미치는데..? 1920x1080 png 저장하는데 개당 거의 3MB 나와서 당황;;
-        cv.imwrite(_image_save_name, frame, [int(cv.IMWRITE_JPEG_QUALITY),100]) # 이제 용량을 줄이쟈!!!!!!!!!!JPEG 를 사용하는거야!! 옵션에 대한 실험 데이터는 opencv_image_saving_with_compression.py 에서 확인해보기!
+        #cv.imwrite(_image_save_name, frame, [int(cv.IMWRITE_JPEG_QUALITY),100]) # 이제 용량을 줄이쟈!!!!!!!!!!JPEG 를 사용하는거야!! 옵션에 대한 실험 데이터는 opencv_image_saving_with_compression.py 에서 확인해보기!
     return frame, None
 
 """
@@ -198,7 +304,7 @@ def process_frame(frame, frame_counter):
 """
 if __name__ == '__main__':
     _PAUSED_FRAME =  np.zeros((400,400,3), dtype=np.uint8)# 일시정지된 프레임을 담는 공간~
-
+    VIDEO_OUT = cv.VideoWriter('outpy.avi',cv.VideoWriter_fourcc('M','J','P','G'), 10, (1920,1080))
     VIDEO = cv.VideoCapture(VIDEO_FILE_PATH) # 동영상 불러오기!
     THREAD_COUNTS = cv.getNumberOfCPUs() # CPU 갯수 얻기
     THREAD_POOL = ThreadPool(processes = THREAD_COUNTS) # 스레드 활성화
@@ -262,6 +368,5 @@ if __name__ == '__main__':
                 DEBUGGER.add('Pending / Max     : ' + str(len(THREAD_CONTAINER)) + '/' + str(THREAD_COUNTS))
                 DEBUGGER.add('Current Frame     : '+ str(FRAME_COUNTER))
             cv.imshow(WINDOW_TITLE, DEBUGGER.write_on_frame(_PAUSED_FRAME)) # 디버그 메세지 추가된 프레임 넣기
-
     VIDEO.release() # 비디오 파일 잠금 해제
 cv.destroyAllWindows() # 화면 끄기

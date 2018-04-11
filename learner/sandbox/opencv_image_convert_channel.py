@@ -1,0 +1,18 @@
+"""
+파이선 opencv 라이브러리 테스팅
+저자 : 안광은 (yooer10ms@cu.ac.kr)
+버전 : python 3.5.4, opencv 3.4.0
+
+Visual Studio Code에서 실행 시 라이브러리 호출 문제로 Python:Terminal (integrated)로 실행하면 잘됨!
+
+레퍼런스:
+
+"""
+
+# 되긴 되는데 왜 코드 완성이 자동으로 안되는지 모르겟다.... 하.....진심 이거 코딩할때 완전 불편해지는 심각한 문제인데.... 아오 ㅠㅠㅠ
+import cv2
+
+image = cv2.imread('c:/Users/yooer/Downloads/20170416_082838_101.jpg') # 상대경로 먹힘 !!! 
+res = cv2.resize(image,None,fx=0.5, fy=0.5, interpolation = cv2.INTER_CUBIC)
+cv2.imshow('test', image)
+cv2.waitKey(0)
