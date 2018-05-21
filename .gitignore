@@ -16,6 +16,7 @@ learner/resources/videos/sample_video_2.mp4
 learner/resources/images/*
 
 # 크롤링
+crawler/test/*
 
 # UI
 
