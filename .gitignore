@@ -17,6 +17,7 @@ learner/resources/images/*
 
 # 크롤링
 crawler/test/*
+ImageCompare/*
 
 # UI
 
