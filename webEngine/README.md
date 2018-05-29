@@ -41,7 +41,7 @@
 ## 프로그램 구성
 > **서버와의 연결**
 >- Visual Studio Code
->   - ftp-sync 이용
+>   - [ ] ftp-sync 이용
 >       | 명령어 | 기능 |
 >       | --- | --- |
 >       | remotePath | 업로드하려는 경로 설정 ( 기본 경로 "root" ) |
@@ -56,13 +56,9 @@
 >       | privateKeyPath | SFTP 개인 키 경로 지정 ( 기본 값 " null " ) |
 >       | passphrase | SFTP 개인 키와 함께 사용될 암호 지정 (기본 값 " null ") |
 >       | ignore | 무시할 경로 설정 ( 기본 값 "./git, ./vscode, ./DS_Store ") |
->       | "generatedFiles": {
->       - "uploadOnSave": true,
->       - "path": "", [e.g.] "/build",
->       - "extensionsToInclude": [] e.g. [".js", ".styl"] }
->       | 이건 아직 잘 모르겠....따아ㅠ
-> ---
->   - ftp-simple 이용
+>       | "generatedFiles": { </br> &emsp;"uploadOnSave": true, </br> &emsp;"path": "", [e.g.] "/build", </br> &emsp;"extensionsToInclude": [] e.g. [".js", ".styl"] </br>} | 이건 아직 잘 모르겠....따아ㅠ
+>
+>   - [ ] ftp-simple 이용
 >       | 명령어 | 기능 |
 >       | --- | --- |
 >       | name | 설정 이름 |
@@ -74,11 +70,16 @@
 >       | path | 연결할 경로 |
 >       | autosave | 자동 저장 여부 ( true 또는 false ) |
 >       | confirm | 확인 창 ( true 또는 false ) |
-> ---
+>
+>- [x] 연구실 Git ( Yona ) 이용
+>    - clone 주소 : http://gkswjd9969@203.250.34.153:9000/gkswjd9969/UI_test
+>    - UI_Test ( branch : develop )
+>       - Main.php
+>---
 
 ### 디렉토리 구성
->- ./UI_test                            # UI 테스트 디렉토리
->   - ./index.php                       # UI적용 php파일
->   - ./Other_Site_Features.md          # 다른 웹 사이트 게임들 특징 정리
->
->- ./README.md                          # 개발 가이드
+```
+    ./Main.php                       # UI적용 php파일
+    ./Other_Site_Features.md         # 다른 웹 사이트게임들 특징 정리
+    ./README.md                      # 개발 가이드
+```
