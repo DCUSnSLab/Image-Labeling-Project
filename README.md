@@ -6,7 +6,7 @@
 
 ## 프로그램 구조도
 
-![](mdRes/Image_Labeling_Architecture.png)
+![](mdRes/Image_Labeling_Architecture2.png)
 
 ### 개발자
 
