@@ -21,7 +21,7 @@ function scanpath($path) {
     }
     return $tree;
 }
-$scanresult=scanpath(__DIR__."../");
+$scanresult=scanpath(__DIR__."../../");
 echo '<pre>';
 print_r($scanresult);
 echo '</pre>';
