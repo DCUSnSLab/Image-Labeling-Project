@@ -21,7 +21,7 @@ function scanpath($path) {
     }
     return $tree;
 }
-$scanresult=scanpath(__DIR__."../crawler/google-images-download/개/");
+$scanresult=scanpath(__DIR__."../crawler/");
 echo '<pre>';
 print_r($scanresult);
 echo '</pre>';
