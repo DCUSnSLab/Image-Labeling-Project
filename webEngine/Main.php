@@ -56,432 +56,12 @@
     <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 
     <!-- CSS style definition -->
-    <style type="text/css">
-      body {
-      min-width: 800px;
-      padding: 0;
-      margin: 0;
-      font-family: sans-serif;
-      }
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 
-      /* Top panel : #navbar, #toolbar */
-      .top_panel {
-      position: fixed;
-      top: 0;
-      left: 0;
-      display: block;
-      font-size: medium;
-      background-color: #000000;
-      color: white;
-      z-index: 10;
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      }
-
-      .navbar {
-      display: inline-block;
-      }
-      .navbar ul {
-      display: inline;
-      list-style-type: none;
-      overflow: hidden;
-      }
-      .navbar li {
-      float: left;
-      }
-      .navbar li a, .drop_menu_item {
-      display: inline-block;
-      color: white;
-      padding: 0.65em 1.2em;
-      text-decoration: none;
-      }
-      .navbar li a:hover, .dropdown:hover {
-      background-color: #999999;
-      cursor: pointer;
-      }
-      .navbar li.dropdown {
-      display: inline-block;
-      }
-      .navbar .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #333333;
-      min-width: 120px;
-      border: 1px solid #ffffff;
-      font-size: small;
-      }
-      .navbar .dropdown-content a {
-      color: #ffffff;
-      padding: 0.4em 0.6em;
-      text-decoration: none;
-      display: block;
-      text-align: left;
-      background-color: #333333;
-      float: none;
-      }
-      .navbar .dropdown-content a:hover {
-      background-color: #000000;
-      color: #ffff00;
-      }
-      .navbar .dropdown:hover .dropdown-content {
-      display: block;
-      }
-
-      .toolbar {
-      display: inline-block;
-      color: white;
-      vertical-align: top;
-      }
-      .toolbar ul {
-      display: inline;
-      list-style-type: none;
-      overflow: hidden;
-      }
-      .toolbar li {
-      font-size: medium;
-      float: left;
-      padding: 0.65em 0.3em;
-      color: white;
-      }
-      .toolbar li:hover {
-      background-color: #333333;
-      color: red;
-      cursor: pointer;
-      }
-
-      #fileinfo {
-      font-size: small;
-      padding: 1.2em 0.8em;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      }
-
-      /* Middle panel: containing #image_panel, #leftsidebar */
-      .middle_panel {
-      position: relative;
-      display: table;
-      table-layout: fixed;
-      width: 100%;
-      z-index: 1;
-      padding: 0;
-      top: 3.5em;
-      /*padding-top: 1.0125em;  ensures the mouse event (x,y) coordinates are integer */
-      }
-      #leftsidebar {
-      display: table-cell;
-      width: 250px;
-      z-index: 10;
-      vertical-align: top;
-      }
-      #display_area {
-      display: table-cell;
-      width: 100%;
-      z-index: 1;
-      margin: 0;
-      padding-left: 1em;
-      vertical-align: top;
-      }
-      #canvas_panel {
-      position: relative;
-      margin: 0;
-      padding: 0;
-      }
-      #leftsidebar_collapse_panel {
-      display: table-cell;
-      position: relative;
-      width: 10px;
-      z-index: 1;
-      vertical-align: top;
-      font-size: small;
-      }
-      #leftsidebar_collapse_button {
-      background-color: black;
-      width: 10px;
-      height: 25px;
-      color: white;
-      padding: 0.2em;
-      border-radius: 0px 5px 5px 0px;
-      font-size: large;
-      }
-      #leftsidebar_collapse_button:hover {
-      color: red;
-      cursor: pointer;
-      }
-
-      /* Left sidebar accordion */
-      button.leftsidebar_accordion {
-      font-size: large;
-      background-color: #f2f2f2;
-      cursor: pointer;
-      padding: 0.5em 0.5em;
-      width: 100%;
-      text-align: left;
-      border: 0;
-      outline: none;
-      }
-      button.leftsidebar_accordion:focus {
-      outline: none;
-      }
-      button.leftsidebar_accordion.active, button.leftsidebar_accordion:hover {
-      background-color: #e6e6e6;
-      }
-      button.leftsidebar_accordion:after {
-      content: '\02795';
-      color: #4d4d4d;
-      float: right;
-      }
-      button.leftsidebar_accordion.active:after {
-      content: '\2796';
-      }
-      .leftsidebar_accordion_panel {
-      display: none;
-      padding-top: 0;
-      padding-left: 0.5em;
-      font-size: small;
-      border-right: 2px solid #f2f2f2;
-      border-bottom: 2px solid #f2f2f2;
-      }
-      .leftsidebar_accordion_panel.show {
-      display: block;
-      }
-
-      /* Region shape selection panel inside leftsidebar */
-      ul.region_shape {
-      font-size: xx-large;
-      list-style-type: none;
-      overflow: hidden;
-      padding: 0.4em 0;
-      margin: 0;
-      }
-      ul.region_shape li{
-      float: left;
-      padding: 0 0.2em;
-      fill: #ffffff;
-      stroke: #000000;
-      }
-      ul.region_shape li:hover {
-      cursor: pointer;
-      fill: #ffffff;
-      stroke: #ff0000;
-      }
-      ul.region_shape .selected {
-      fill: #ffffff;
-      stroke: #ff0000;
-      }
-
-      /* Loaded image list shown in leftsidebar panel */
-      #img_list_panel {
-      display: none;
-      height: 0;
-      font-size: small;
-      overflow: scroll;
-      }
-      #img_list_panel ul {
-      position: relative;
-      line-height: 1.3em;
-      padding-left: 0;
-      list-style-type: none;
-      }
-      #img_list_panel li {
-      white-space: nowrap;
-      }
-      #img_list_panel li:hover {
-      background-color: #cccccc;
-      color: #000000;
-      cursor: pointer;
-      }
-
-      #message_panel {
-      position: fixed;
-      left: 0;
-      bottom: 0px;
-      line-height: 3em;
-      width: 100%;
-      background-color: #000000;
-      color: #ffff00;
-      font-size: small;
-      text-align: center;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      z-index: 1000;
-      }
-
-      #invisible_file_input {
-      width: 0.1px;
-      height: 0.1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      z-index: -1;
-      }
-
-      .text_panel {
-      display: none;
-      margin: auto;
-      font-size: medium;
-      line-height: 1.3em;
-      margin: 0;
-      max-width: 700px;
-      }
-      .text_panel li {
-      margin: 1em 0;
-      text-align: left;
-      }
-      .text_panel p {
-      text-align: left;
-      }
-
-      .action_text_link {
-      background-color: #aaeeff;
-      color: #000000;
-      }
-      .action_text_link:hover {
-      cursor: pointer;
-      }
-
-      .svg_button:hover {
-      cursor: pointer;
-      }
-
-      .tool_button {
-      color: blue;
-      cursor: pointer;
-      }
-      .tool_button:hover {
-      color: red;
-      }
-
-      /* region and file attributes input panel (spreadsheet like) */
-      #attributes_panel {
-      display: none;
-      position: fixed;
-      bottom: 0;
-      z-index: 10;
-      width: 100%;
-      max-height: 30%;
-      overflow: auto;
-      background-color: #ffffff;
-      border-top: 4px solid #000000;
-      padding: 0em 0em;
-      padding-bottom: 2em;
-      font-size: small;
-      }
-      #attributes_panel table {
-      border-collapse: collapse;
-      table-layout: fixed;
-      margin: 1em;
-      margin-bottom: 2em;
-      }
-
-      #attributes_panel td {
-      border: 1px solid #999999;
-      padding: 1em 1em;
-      margin: 0;
-      height: 1em;
-      white-space: nowrap;
-      vertical-align: top;
-      }
-      #attributes_panel tr:first-child td, #attributes_panel td:first-child {
-      padding: 1em 1em;
-      text-align: center;
-      }
-      #attributes_panel input {
-      border: none;
-      padding: 0;
-      margin: 0;
-      display: table-cell;
-      height: 1.3em;
-      font-size: small;
-      background-color: #ffffff;
-      vertical-align: top;
-      }
-      #attributes_panel input:hover {
-      background-color: #e6e6e6;
-      }
-      #attributes_panel input:focus {
-      background-color: #e6e6e6;
-      }
-      #attributes_panel input:not(:focus) {
-      text-align: center;
-      }
-      #attributes_panel textarea {
-      border: none;
-      padding: 0;
-      margin: 0;
-      display: table-cell;
-      font-size: small;
-      background-color: #ffffff;
-      }
-      #attributes_panel textarea:hover {
-      background-color: #e6e6e6;
-      }
-      #attributes_panel textarea:focus {
-      background-color: #e6e6e6;
-      }
-
-      #attributes_panel_toolbar {
-      display: block;
-      height: 30px;
-      width: 100%;
-      position: relative;
-      padding: 0;
-      margin: 0;
-      }
-      .attributes_panel_button {
-      width: 10px;
-      color: black;
-      font-size: x-large;
-      margin-left: 0.5em;
-      padding: 0;
-      }
-      .attributes_panel_button:hover {
-      color: red;
-      cursor: pointer;
-      }
-
-      /* layers of canvas */
-      #image_panel {
-      position: relative;
-      display: inline-block;
-      margin: auto;
-      margin-top: 1em;
-      }
-      #image_canvas {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      z-index: 1;
-      }
-      #region_canvas {
-      position: absolute;
-      top: 0px;
-      left: 0px;
-      z-index: 2;
-      }
-      /* Loading spinbar */
-      .loading_spinbox {
-      display: inline-block;
-      border: 0.4em solid #cccccc;
-      border-radius: 50%;
-      border-top: 0.4em solid #000000;
-      -webkit-animation: spin 2s linear infinite;
-      animation: spin 2s linear infinite;
-      }
-      @-webkit-keyframes spin {
-      0% { -webkit-transform: rotate(0deg); }
-      100% { -webkit-transform: rotate(360deg); }
-      }
-      @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-      }
-    </style>
   </head>
 
-  <body onload="_via_init()" onresize="_via_update_ui_components()">
+  <!--<body onload="_via_init()" onresize="_via_update_ui_components()">-->
+  <body onresize="_via_update_ui_components()">
     <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <symbol id="shape_rectangle">
@@ -514,9 +94,10 @@
           <li><a onclick="show_home_panel()" title="Home">Home</a></li>
           <li class="dropdown"><a title="Image" class="drop_menu_item">Image &#9662;</a>
             <div class="dropdown-content">
-              <a onclick="sel_local_images()" title="Load (or add) a set of images from local disk">Load or Add Images</a>
+              <!--<a onclick="sel_local_images()" title="Load (or add) a set of images from local disk">Load or Add Images</a>-->
               <a onclick="show_img_list()" title="Browse currently loaded images">List Images</a>
-              <a href="image_random.php">Image Directory</a>
+              <a href="image_download.php">Image Directory</a>
+              <a href="Database.php">Save Data</a>
             </div>
           </li>
           <li class="dropdown"><a title="Annotations" class="drop_menu_item">Annotation &#9662;</a>
@@ -569,7 +150,7 @@
           <li id="toolbar_del_region" onclick="del_sel_regions()" title="Delete Region">&times;</li>
         </ul>
       </div> <!-- endof #toolbar -->
-      <!-- All Files Upload in local Directory -->
+      <!-- Files Upload in local Directory -->
       <input type="file" id="invisible_file_input" multiple name="files[]" style="display:none">
                       <!-- webkitdirectory : select directory, multiple : files -->
     </div> <!-- endof #top_panel -->
@@ -645,8 +226,66 @@
       <!-- Main display area: contains image canvas, ... -->
       <div id="display_area">
         <div id="canvas_panel">
-          <canvas id="image_canvas"></canvas>
+          </canvas id="image_canvas">
+          <?php
+            /**
+             * @Author
+             *  Jeong Han
+             * @date
+             *  8.April.2018
+             * @ref
+             *  http://blog.devez.net/292 - list of filename in diretory
+             */
+            
+            // 폴더명 지정
+            $dir = "../crawler/google-images-download/downloads/개/";
+            
+            // 핸들 획득
+            $handle  = opendir($dir);
+             
+            $files = array();
+             
+            // 디렉터리에 포함된 파일을 저장한다.
+            while (false !== ($filename = readdir($handle))) {
+              if($filename == "." || $filename == ".."){
+                continue;
+              }
+              
+              // 파일인 경우만 목록에 추가한다.
+              if(is_file($dir . "/" . $filename)){
+                array_push($files,"<img src=\"".$dir."/".$filename."\">"); // 배열에 img태그 내용 삽입
+                //array_push($files, $filename); // 배열에 내용 삽입
+                //$files[] = $dir."/".$filename;                             // 배열에 파일 경로 삽입
+              }
+            }
+            
+            // 핸들 해제 
+            closedir($handle);
+            
+            // // 정렬, 역순으로 정렬하려면 rsort 사용
+            // sort($files);
+
+
+            $i = mt_rand(0,100);
+            echo $files[$i];
+            
+            // //배열 내용 모두 출력
+            // foreach($files as $data){
+            //   // $exif = exif_read_data($data, 0, true);
+            //   // foreach ($exif as $key => $section) {
+            //   //   foreach ($section as $name => $val) {
+            //   //     echo "$name: $val\n";
+            //   //   }
+            //   // }
+            //   echo $data;
+            //   //echo json_encode($data);
+            //   echo "</br>";
+            // }
+          ?>
+          </canvas>
           <canvas id="region_canvas">Sorry, your browser does not support HTML5 Canvas functionality which is required for this application.</canvas>
+          <!--<canvas id="image_canvas"></canvas>
+          <canvas id="region_canvas">Sorry, your browser does not support HTML5 Canvas functionality which is required for this application.</canvas>-->
         </div>
 
         <div>
@@ -925,7 +564,6 @@ var _via_loaded_img_table_html = [];
 
 // UI html elements
 var invisible_file_input = document.getElementById("invisible_file_input");
-var image_panel  = document.getElementById("image_panel");
 var ui_top_panel = document.getElementById("ui_top_panel");
 var canvas_panel = document.getElementById("canvas_panel");
 
@@ -1081,30 +719,11 @@ function clear_image_display_area() {
   set_all_text_panel_display('none');
 }
 
-//ajax
-//$('#Load_image').click(function(){
-  // add loading image to div
-  //$('#display_area').html('<img src="http://preloaders.net/preloaders/287/Filling%20broken%20ring.gif"> loading...');
-
-  //run ajax request
-  //$.ajax({
-    //type:"POST",
-    //url:'image_random.php',
-    //dataType: "json",
-    //success:function(data){
-      //alert(data);
-    //}
-    //error:function(XHR, message, errorThroen){
-
-    //}
-  //});
-//})
-
 //
 // Local file uploaders
 //
 function store_local_img_ref(event) {
-  var user_selected_images = event.target.files;
+  var user_selected_images = event.target.files; //Object Filelist
   var original_image_count = _via_img_count;
 
   // clear browser cache if user chooses to load new images
