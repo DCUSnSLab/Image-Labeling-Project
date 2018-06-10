@@ -238,7 +238,7 @@
              */
             
             // 폴더명 지정
-            $dir = "../crawler/google-images-download/downloads/개/";
+            $dir = "../crawler/google-images-download/downloads/*";
             
             // 핸들 획득
             $handle  = opendir($dir);
@@ -265,8 +265,10 @@
             // // 정렬, 역순으로 정렬하려면 rsort 사용
             // sort($files);
 
+            //배열 중 랜덤 숫자 생성
+            $i = mt_rand(0,199);
 
-            $i = mt_rand(0,100);
+            //배열 내용 출력
             echo $files[$i];
             
             // //배열 내용 모두 출력
