@@ -238,7 +238,7 @@
              */
             
             // 폴더명 지정
-            $dir = "../crawler/google-images-download/downloads/*";
+            $dir = "../crawler/google-images-download/downloads/개";
             
             // 핸들 획득
             $handle  = opendir($dir);
