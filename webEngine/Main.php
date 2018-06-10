@@ -266,7 +266,7 @@
             // sort($files);
 
             //배열 중 랜덤 숫자 생성
-            $i = mt_rand(0,199);
+            $i = mt_rand(0,100);
 
             //배열 내용 출력
             echo $files[$i];
